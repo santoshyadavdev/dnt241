@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "dnt241"
+  "defaultProject": "dnt241",
+  "cli": {
+    "analytics": "8ea5e33c-ab33-473a-9b27-802f56b0c8ee"
+  }
 }
