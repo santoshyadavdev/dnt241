@@ -1,0 +1,55 @@
+<h1>
+  Employee List
+</h1>
+<!-- <pre>
+  {{empList | json}}
+</pre> -->
+
+<button (click)="loadMoreEmployee()">Load Employee</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Even</th>
+      <th>Odd</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>DOB</th>
+      <th>Email</th>
+      <th>Salary</th>
+      <th>
+        Select
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let emp of empList | slice : 1 : 4;
+     let i =index;
+     let e= even;
+     let o=odd; trackBy: trackbyId">
+      <td>{{i}}</td>
+      <td>{{e}}</td>
+      <td>{{o}}</td>
+      <td>
+        {{emp.id | percent}}
+      </td>
+      <td>
+        {{emp.name | uppercase}}
+      </td>
+      <td [innerText]="emp.dob | date: 'dd-MMM-yyyy' | lowercase">
+      </td>
+      <td>
+        {{emp.email | titlecase}}
+      </td>
+      <td>
+        {{emp.salary | currency: 'INR'}}
+      </td>
+      <td>
+        <button class="btn btn-success" (click)="selectEmployee(emp)">
+          Select Employee
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

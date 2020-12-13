@@ -1,1 +1,30 @@
 <h1>employee works!</h1>
+<p>
+  <!-- interpolation -->
+  Employee Name : {{name}}
+</p>
+
+<!-- property binding -->
+<!-- <div [hidden]="hide" [innerText]="name">
+
+</div> -->
+
+<div *ngIf="hide" [innerText]="name">
+
+</div>
+
+<button (click)="toggle()">Toggle</button>
+
+<h1>
+  Employee Details
+</h1>
+<div>
+  {{employee.id}}
+</div>
+<div>
+  {{employee.name}}
+</div>
+
+
+<app-employee-list [empList]="employeeList"
+(selectedEmployee)="receiveFromChild($event)"></app-employee-list>
