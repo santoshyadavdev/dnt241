@@ -1,20 +1,34 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component, EventEmitter,
+  Input, OnChanges, OnInit, Output, SimpleChanges
+} from '@angular/core';
 import { Employee } from '../employee';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss']
+  styleUrls: ['./employee-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
 
   @Input() empList: Employee[];
 
+  @Input() title: string;
+
   @Output() selectedEmployee = new EventEmitter<Employee>();
 
-  constructor() { }
+  constructor() {
+    console.log('child component constructor');
+   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes.empList);
+  }
 
   ngOnInit(): void {
+    console.log('child component ngoninit');
   }
 
   loadMoreEmployee() {
@@ -61,7 +75,7 @@ export class EmployeeListComponent implements OnInit {
     return employee.id;
   }
 
-  selectEmployee(emp:Employee) {
+  selectEmployee(emp: Employee) {
     this.selectedEmployee.emit(emp);
   }
 }

@@ -1,4 +1,7 @@
-<h1>employee works!</h1>
+<app-header></app-header>
+<app-header></app-header>
+<app-header></app-header>
+<app-header></app-header>
 <p>
   <!-- interpolation -->
   Employee Name : {{name}}
@@ -8,6 +11,10 @@
 <!-- <div [hidden]="hide" [innerText]="name">
 
 </div> -->
+<!-- Template Ref -->
+<div #errorDiv>
+
+</div>
 
 <div *ngIf="hide" [innerText]="name">
 
@@ -25,6 +32,8 @@
   {{employee.name}}
 </div>
 
-
-<app-employee-list [empList]="employeeList"
+<button class="btn btn-primary" (click)="addEmployee()">
+  Add Employee
+</button>
+<app-employee-list [empList]="employeeList" [title]="'Employee List'"
 (selectedEmployee)="receiveFromChild($event)"></app-employee-list>
