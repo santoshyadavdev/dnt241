@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SkipSelf } from '@angular/core';
 import { Employee } from '../employee/employee';
+import { EmployeeService } from '../employee/service/employee.service';
 
 @Component({
   selector: 'app-department',
@@ -32,9 +33,21 @@ export class DepartmentComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(@SkipSelf() private empService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.employeeList = this.empService.getEmployeeList();
+  }
+
+  addEmployee() {
+    let ritesh = {
+      id: 5,
+      name: 'Ritesh',
+      dob: new Date('10-Jun-2007'),
+      email: 'Ritesh@test.com',
+      salary: 8000
+    }
+    this.employeeList = this.empService.addEmployee(ritesh);
   }
 
 }

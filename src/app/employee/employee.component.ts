@@ -1,17 +1,21 @@
 import {
   AfterViewInit, Component, DoCheck,
   ElementRef, OnChanges, OnInit,
-  QueryList, ViewChild, ViewChildren
+  Optional,
+  QueryList, Self, ViewChild, ViewChildren
 } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { LoggerService } from '../service/logger.service';
 import { Employee } from './employee';
+import { EmployeeService } from './service/employee.service';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   // template: `<p>employee
   //   works!</p>`,
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
+  providers: [EmployeeService]
   // styles: []
 })
 export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
@@ -35,48 +39,22 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
 
   @ViewChild('errorDiv', { static: true }) errdiv: ElementRef;
 
-  constructor() {
+  constructor(@Self() private empService: EmployeeService,
+    @Optional() private logger: LoggerService) {
     this.hide = false;
     console.log('parent component constructor');
   }
 
   ngOnInit(): void {
-    console.log(this.errdiv);
+    if (this.logger) {
+      this.logger.log(this.errdiv.toString());
+    }
     this.errdiv.nativeElement.innerHTML = '<b>This is error</b>';
 
     console.log('parent component ngoninit');
     // this.headerComponent.title = 'Employee List';
 
-    this.employeeList = [
-      {
-        id: 1,
-        name: 'Anand',
-        dob: new Date('10-Feb-2000'),
-        email: 'anand@test.com',
-        salary: 4000
-      },
-      {
-        id: 2,
-        name: 'Ajay',
-        dob: new Date('10-Mar-2000'),
-        email: 'anand@test.com',
-        salary: 5000
-      },
-      {
-        id: 3,
-        name: 'Amar',
-        dob: new Date('10-Apr-2000'),
-        email: 'anand@test.com',
-        salary: 6000
-      },
-      {
-        id: 4,
-        name: 'Rony',
-        dob: new Date('10-Jun-2000'),
-        email: 'anand@test.com',
-        salary: 7000
-      }
-    ];
+    this.employeeList = this.empService.getEmployeeList();
   }
 
   ngDoCheck() {
@@ -101,16 +79,6 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
     this.employee = emp;
   }
   addEmployee() {
-    // this.employeeList.push(
-    //   {
-    //     id: 5,
-    //     name: 'Ritesh',
-    //     dob: new Date('10-Jun-2007'),
-    //     email: 'Ritesh@test.com',
-    //     salary: 8000
-    //   }
-    // )
-
     let ritesh = {
       id: 5,
       name: 'Ritesh',
@@ -118,7 +86,7 @@ export class EmployeeComponent implements OnInit, DoCheck, AfterViewInit {
       email: 'Ritesh@test.com',
       salary: 8000
     }
-    this.employeeList = [...this.employeeList, ritesh];
+    this.employeeList = this.empService.addEmployee(ritesh);
   }
 
 
