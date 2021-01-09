@@ -17,12 +17,8 @@ export class PostComponent implements OnInit {
     this.postService.getPosts().subscribe((res) => this.postList = res);
   }
 
-  addPost() {
-    this.postService.addPost({
-      body: 'tets',
-      title: 'test title',
-      userId: 2,
-    }).subscribe(res => console.log(res));
+  addNewPost(post: Post) {
+    this.postService.addPost(post).subscribe(res => console.log(res));
   }
 
   updatePost() {
@@ -34,7 +30,7 @@ export class PostComponent implements OnInit {
     }).subscribe(res => console.log(res));
   }
 
-  deletePost(){
+  deletePost() {
     this.postService.deletePost({
       body: 'tets',
       title: 'test title',

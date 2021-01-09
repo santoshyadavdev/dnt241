@@ -1,6 +1,8 @@
-<button class="btn btn-primary" (click)="addPost()">
+<!-- <button class="btn btn-primary" (click)="addPost()">
   Add Post
-</button>
+</button> -->
+
+<app-post-add (addPost)="addNewPost($event)"></app-post-add>
 
 <button class="btn btn-danger" (click)="updatePost()">
   Update Post

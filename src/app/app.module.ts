@@ -15,6 +15,8 @@ import { PostListComponent } from './post/post-list/post-list.component';
 import { PhotosComponent } from './post/photos/photos.component';
 import { ApiInterceptor } from './api.interceptor';
 import { TokenInterceptor } from './token.interceptor';
+import { PostAddComponent } from './post/post-add/post-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { TokenInterceptor } from './token.interceptor';
     ContainerComponent,
     PostComponent,
     PostListComponent,
-    PhotosComponent
+    PhotosComponent,
+    PostAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
