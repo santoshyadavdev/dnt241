@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
+import { PhotosComponent } from './post/photos/photos.component';
+import { ApiInterceptor } from './api.interceptor';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { PostListComponent } from './post/post-list/post-list.component';
     HeaderComponent,
     ContainerComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
+    PhotosComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,10 @@ import { PostListComponent } from './post/post-list/post-list.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
