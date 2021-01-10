@@ -16,7 +16,8 @@ import { PhotosComponent } from './post/photos/photos.component';
 import { ApiInterceptor } from './api.interceptor';
 import { TokenInterceptor } from './token.interceptor';
 import { PostAddComponent } from './post/post-add/post-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeOnboardingComponent } from './employee/employee-onboarding/employee-onboarding.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,16 @@ import { FormsModule } from '@angular/forms';
     PostComponent,
     PostListComponent,
     PhotosComponent,
-    PostAddComponent
+    PostAddComponent,
+    EmployeeOnboardingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
