@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Post } from '../service/post';
 
 @Component({
@@ -14,6 +15,8 @@ export class PostAddComponent implements OnInit {
     title: ''
   }
 
+  submitDate: Date;
+
   selectedOption ='';
 
   options = ['new user', 'old user'];
@@ -25,8 +28,9 @@ export class PostAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitPost() {
+  submitPost(postForm: NgForm) {
     this.addPost.emit(this.post);
+    postForm.resetForm();
   }
 
 }
