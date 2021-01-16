@@ -18,6 +18,14 @@ import { TokenInterceptor } from './token.interceptor';
 import { PostAddComponent } from './post/post-add/post-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeOnboardingComponent } from './employee/employee-onboarding/employee-onboarding.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +39,9 @@ import { EmployeeOnboardingComponent } from './employee/employee-onboarding/empl
     PostListComponent,
     PhotosComponent,
     PostAddComponent,
-    EmployeeOnboardingComponent
+    EmployeeOnboardingComponent,
+    NavBarComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,13 @@ import { EmployeeOnboardingComponent } from './employee/employee-onboarding/empl
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
