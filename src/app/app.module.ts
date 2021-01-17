@@ -4,20 +4,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
-import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
-import { PostComponent } from './post/post.component';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { PhotosComponent } from './post/photos/photos.component';
 import { ApiInterceptor } from './api.interceptor';
 import { TokenInterceptor } from './token.interceptor';
-import { PostAddComponent } from './post/post-add/post-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmployeeOnboardingComponent } from './employee/employee-onboarding/employee-onboarding.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,25 +18,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { EmployeeModule } from './employee/employee.module';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
     DepartmentComponent,
-    EmployeeListComponent,
-    HeaderComponent,
     ContainerComponent,
-    PostComponent,
-    PostListComponent,
-    PhotosComponent,
-    PostAddComponent,
-    EmployeeOnboardingComponent,
     NavBarComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    EmployeeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -55,7 +43,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },

@@ -19,6 +19,10 @@ export class PostService {
     });
   }
 
+  getPostById(id: number) {
+    return this.http.get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
+  }
+
   addPost(post: Post) {
     return this.http.post('https://jsonplaceholder.typicode.com/posts', post, {
       headers: this.jwtHeaders
