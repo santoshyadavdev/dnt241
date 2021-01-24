@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { EmployeeModule } from './employee/employee.module';
 import { LoginComponent } from './login/login.component';
+import { DntCoreModule } from 'dnt-core';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { LoginComponent } from './login/login.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    DntCoreModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },

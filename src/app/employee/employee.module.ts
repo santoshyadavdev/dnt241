@@ -7,6 +7,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeOnboardingComponent } from './employee-onboarding/employee-onboarding.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { WelcomePipe } from './pipes/welcome.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { HeaderComponent } from '../header/header.component';
     EmployeeComponent,
     EmployeeListComponent,
     EmployeeOnboardingComponent,
-    HeaderComponent
+    HeaderComponent,
+    WelcomePipe,
+    FilterPipe
   ],
   imports: [
     CommonModule,

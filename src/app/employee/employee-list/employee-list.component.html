@@ -7,6 +7,9 @@
 
 <button (click)="loadMoreEmployee()">Load Employee</button>
 
+{{salary.value}}
+<input class="form-control" type="number" [formControl]="salary">
+
 <table class="table">
   <thead>
     <tr>
@@ -24,7 +27,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let emp of empList;
+    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let emp of empList | filter: salary.value;
      let i =index;
      let e= even;
      let o=odd; trackBy: trackbyId">
@@ -35,7 +38,7 @@
         {{emp.id | percent}}
       </td>
       <td>
-        {{emp.name | uppercase}}
+        {{emp.name | uppercase | welcome}}
       </td>
       <td [innerText]="emp.dob | date: 'dd-MMM-yyyy' | lowercase">
       </td>

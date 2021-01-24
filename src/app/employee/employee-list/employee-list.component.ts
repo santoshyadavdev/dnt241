@@ -3,6 +3,7 @@ import {
   Component, EventEmitter,
   Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Employee } from '../employee';
 
 @Component({
@@ -19,6 +20,8 @@ export class EmployeeListComponent implements OnInit, OnChanges {
 
   @Output() selectedEmployee = new EventEmitter<Employee>();
 
+  salary: FormControl;
+
   constructor() {
     console.log('child component constructor');
    }
@@ -28,6 +31,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.salary = new FormControl('0');
     console.log('child component ngoninit');
   }
 

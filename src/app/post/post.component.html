@@ -22,6 +22,6 @@
 <router-outlet></router-outlet>
 <hr>
 
-<app-post-list [postList]="postList"></app-post-list>
+<app-post-list [postList]="posts$ | async"></app-post-list>
 
 

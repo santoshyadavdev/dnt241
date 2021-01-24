@@ -8,6 +8,8 @@ import { PhotosComponent } from './photos/photos.component';
 import { PostAddComponent } from './post-add/post-add.component';
 import { FormsModule } from '@angular/forms';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { DntCoreModule } from 'dnt-core';
+import { CustomValidatorDirective } from './directives/custom-validator.directive';
 
 
 @NgModule({
@@ -17,11 +19,13 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     PhotosComponent,
     PostAddComponent,
     PostDetailsComponent,
+    CustomValidatorDirective,
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
-    FormsModule
+    FormsModule,
+    DntCoreModule
   ]
 })
 export class PostModule { }
