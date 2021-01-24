@@ -3,10 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 import { EmployeeOnboardingComponent } from './employee-onboarding/employee-onboarding.component';
 import { EmployeeComponent } from './employee.component';
+import { EmployeeGuard } from './guards/employee.guard';
 
 const routes: Routes = [
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
-  { path: 'employee/onboarding', component: EmployeeOnboardingComponent,  canActivate: [AuthGuard] },
+  {
+    path: 'employee/onboarding',
+    component: EmployeeOnboardingComponent,
+    canActivate: [AuthGuard],
+    canDeactivate : [EmployeeGuard]
+  },
 ];
 
 @NgModule({

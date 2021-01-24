@@ -96,5 +96,6 @@
 
   <div class="form-group">
     <button [disabled]="onBoardingForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+    <button [disabled]="onBoardingForm.pristine" class="btn btn-primary" type="button" (click)="reset()" type="submit">Reset</button>
   </div>
 </form>

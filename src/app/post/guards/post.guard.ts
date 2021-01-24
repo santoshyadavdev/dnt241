@@ -8,10 +8,10 @@ import { LoginService } from 'src/app/login/services/login.service';
 })
 export class PostGuard implements CanActivateChild {
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) { }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot,
-     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.loginService.isAdmin;
   }
 

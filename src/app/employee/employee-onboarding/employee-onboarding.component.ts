@@ -98,5 +98,34 @@ export class EmployeeOnboardingComponent implements OnInit {
 
   submit() {
     console.log(this.onBoardingForm.getRawValue());
+    this.resetForm();
+  }
+
+  private resetForm() {
+    this.onBoardingForm.reset({
+      name: '',
+      email: '',
+      dob: new Date(''),
+      password: '',
+      confirmPassword: '',
+      address: {
+        addrLine1: '',
+        addrLine2: '',
+        city: '',
+        pin: ''
+      },
+      pastExp: [
+        {
+          employer: '',
+          fromDate: new Date(),
+          toDate: new Date(),
+          designation: ''
+        }
+      ]
+    });
+  }
+
+  reset() {
+    this.resetForm();
   }
 }
